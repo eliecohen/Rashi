@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>tora4u</title>
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.0.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.qtip.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css" />
+	<link rel="stylesheet" type="text/css" href="css/tora.css" />
+	
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+    <script src="js/jquery.mobile-1.4.0.min.js"></script>
+	<script src="js/jquery.qtip.min.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>				
+	<script src="js/tora.js"></script>
+	<script src="js/jquery.jplayer.min.js"></script>	
+</head>
+
+<body id='body'>
+
+	<!-- ####################################################### -->
+	<!-- ######################  MAIN PAGE    ################## -->
+    <!-- ####################################################### -->
+
+  <div data-role="page" id="main-page">
+
+	<!-- ######################  OPTION PANEL ################## -->
+	    
+	<div data-role="panel" id="optionpanel">
+		<fieldset data-role="controlgroup" dir="rtl">
+    		<legend>שפות תירגום לתורה</legend>
+    		<input style="text-align :right" type="checkbox" name="checkbox-1a" id="checkbox-1a" checked="">
+    		<label style="text-align :right" for="checkbox-1a">אנגלית</label>
+    		<input style="text-align :right" type="checkbox" name="checkbox-2a" id="checkbox-2a" checked="">
+    		<label style="text-align :right" for="checkbox-2a">צרפתית</label>
+    		<input style="text-align :right" type="checkbox" name="checkbox-3a" id="checkbox-3a" checked="">
+    		<label style="text-align :right" for="checkbox-3a">ארמית</label>
+		</fieldset>
+			
+		<label for="editor-slider">Editor Mode</label>
+		<select name="editor-slider" id="editor-slider" data-role="slider">
+    		<option value="off">off</option>
+    		<option value="on">on</option>
+		</select>
+	</div>
+
+    <!-- ##################  HEADER ####################### -->
+    
+	<div data-role="header" data-theme="b" data-position="fixed" id="header_area" data-tap-toggle="false">
+	   <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+	      <a href="#optionpanel" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext">option</a>
+          <a href="#about_us" class="ui-btn ui-btn-icon-right ui-icon-info">tora4u.org</a>       
+       </div>
+       <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+       	  <a href="#popupInfo"  data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop" data-position-to="window" data-icon="bars">החלף פרק</a>  
+       </div>	    
+	   <h1><span id="title"></span></h1>
+	   
+	   <!-- ##################  NAVIGATION BAR ####################### -->
+		
+	  	<div data-role="navbar">
+			<ul id='header-button'>
+				<li><a id='bt_traduction'    class='bt_navigate'  href="">תירגום</a></li>
+				<li><a id='bt_taamim'        class='bt_navigate'  href="">טעמים</a></li>
+				<li><a id='bt_rashi'         class='bt_navigate'  href="">עיקרי רשי</a></li>
+				<li><a id='bt_explanation'   class='bt_navigate'  href="">ביאורי מילים</a></li>
+				<!--<li><a id='bt_other_comment' class='bt_navigate'  href="">פירושים</a></li>-->											
+			</ul>
+		</div>
+	</div>		
+	
+	 <!-- ##################  END HEADER ########################## -->
+	 
+	 <!-- ##################  BEGIN CONTENT ####################### -->
+	
+	<div data-role="content">
+		<div id="wrapper">
+		<div id="page">
+		
+		<!-- ##################  TOC ####################### -->
+		
+		<div data-role="popup" id="popupInfo" data-overlay-theme="b" data-theme="a" class="ui-corner-all" style="max-width:550px;">
+			<div dir='rtl'><a style="color:red;margin-right:10px;text-decoration:underline;" id="bysubject1">לפי נושאים</a></div>
+			<div id="toc">
+				<div id="book">
+					<a dir="rtl" id="b1">בראשית</a> | <a id="b2">שמות</a> | <a id="b3">ויקרא</a> | <a id="b4">במדבר</a> | <a id="b5">דברים</a>
+				</div>
+				<hr>
+				<div id="parasha"></div>
+				<hr>
+				<div id="prakim"></div>				
+			</div>
+		</div>
+		
+		<!-- ##################  END TOC      ####################### -->
+		
+		<!-- ##################  TEXT CONTENT ####################### -->
+		
+		<div id="jquery_jplayer_1"></div>
+		<!--  <div id="daf_info"></div>-->
+				
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id='sidebar1'>
+				</div>
+				<div id="content" dir='rtl' style='font-size:30px;'>
+				</div>	
+			<!--<div id='sidebar'>elie</div>-->
+		</div> 	<!-- end #page-bgbtm -->
+		</div>    <!-- end #page-bgtop -->
+		</div>    <!-- end #page -->
+		</div>    <!-- end #wrapper -->
+	
+	</div><!-- div data-role="content" -->
+	<!-- ################## FOOTER  ####################### -->
+	<div data-role="footer" data-theme="b"  class="ui-bar" data-position="fixed" data-id="foo1" data-tap-toggle="false">
+	<h4>tora4u.org</h4>
+	    <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+	        <input type="checkbox" name="checkbox-resume" id="checkbox-resume" data-mini="true" >
+    		<label for="checkbox-resume" id='checkbox-resume-label'>הקדמות</label>
+    		
+    		<input type="checkbox" name="checkbox-play" id="checkbox-play" data-mini="true" >
+    		<label for="checkbox-play" id='checkbox-play-label'>play</label>
+    		
+    		<input type="checkbox" name="checkbox-record" id="checkbox-record" data-mini="true" >
+    		<label for="checkbox-record" id='checkbox-record-label'>Record</label>
+    		
+    		<select name="select-choice-mini" id="select-sound-type" data-mini="true" data-inline="true">
+			</select>
+			
+    		<button class="ui-btn" id='save-record'>Save</button>
+        </div> 
+	</div><!-- /footer -->
+	<!-- ################## END FOOTER  ####################### -->
+</div>
+
+<!-- ####################################################### -->
+<!-- ######################  EDITOR PAGE    ################## -->
+<!-- ####################################################### -->
+
+<div data-role="page" id="editor-page" >
+
+	<!-- ##################  HEADER ####################### -->
+	
+	<div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+		<div data-role="header"><h1>Editor Panel</h1></div>
+		<div data-role="navbar">
+			<ul id='header-button' >
+				<li><a id='bt_add_comment' class='btt_navigate'  href="">פירוש</a></li>
+				<li><a id='bt_add_intro'   class='btt_navigate'  href="">הקדמה</a></li>												
+				<!--<li><a id='bt_add_who_who' class='btt_navigate'  href="">מי מדבר ל מי</a></li>  -->
+			</ul>
+		</div>
+	</div>	
+	
+	<!-- ##################  CONTENT ####################### -->
+		
+	<div data-role="content">
+		<div id="text-top" dir="rtl"></div>	
+		<form id="edit-form"  name="edit-form" data-ajax="false">
+		
+		<div class="ui-body ui-body-c">
+		<div class="ui-grid-b" >
+    		<div class="ui-block-a" class='ui-hide-label'>
+    			<div class="category-comment fieldcontain">
+					<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+					<!--  <legend>Comment Type:</legend>-->
+				   <label for="radio-explication">ביאור מילים</label>			   
+				   <input type="radio" name="radio-choice-b" id="radio-explication" value="other" />
+					<label for="radio-rashi">רש"י</label>
+				   <input type="radio" name="radio-choice-b" id="radio-rashi" value="on" checked="checked" />			   
+				   <!--<label for="radio-other">פירושים אחרים</label>
+				   <input type="radio" name="radio-choice-b" id="radio-other" value="off" />-->		   
+					</fieldset>
+				</div>
+	    	</div>
+	    	<div class="ui-block-b Cauthor category-comment">
+    				<label for="editor-author" class='ui-hidden-accessible'>מחבר:</label>
+    				<input type="text" class="editor-input" id="editor-author" value="" placeholder="כותרת" />
+	    	</div>
+	    	<div class="ui-block-c Ctitle category-comment">
+					<label for="editor-title" class='ui-hidden-accessible'>title</label>
+    				<input type="text" class="editor-input" id="editor-title" value="" placeholder="מחבר" />
+	    	</div>
+		</div><!-- /grid-a -->
+	
+		<!-- Intro  -->
+		<div class="category-intro fieldcontain">
+    		<label for="editor-intro" class='ui-input-text' style='display:None'>Introduction:</label>
+    		<input type="text" class="editor-input" id="editor-intro" value="" placeholder="נושא חדש"/>
+		</div>
+	
+		<!-- essence  -->
+		<!--<div class="category-essence fieldcontain">
+    		<label for="editor-condense" class='ui-input-text'>Condense:</label>
+    		<input type="text" class="editor-input ui-input-text" id="editor-condense" value="" />
+		</div> -->
+	
+		<!-- who is speaking  -->
+		<div class="category-who fieldcontain">
+    		<label for="editor-who" class='ui-input-text'>who:</label>
+    		<input type="text" class="editor-input ui-input-text" id="editor-who" value="" />
+		</div>
+	
+		<!-- Who toWho direction -->	
+		<div class="category-who fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend>Comment Type:</legend>
+				<label for="radio-left">&lt;----</label>			   
+				<input type="radio" name="radio-choice-b" id="radio-left" value="other" />
+				<label for="radio-both">&lt;---&gt;</label>
+			   	<input type="radio" name="radio-choice-b" id="radio-both" value="on" checked="checked" />			   
+			   	<label for="radio-right">---&gt;</label>
+			   	<input type="radio" name="radio-choice-b" id="radio-right" value="off" />			   
+			</fieldset>
+		</div>
+	
+		<!-- who is speaking  -->
+		<div class="category-who fieldcontain">
+	    	<label for="editor-towho" class='ui-input-text'>to who:</label>
+	    	<input type="text" class="editor-input ui-input-text" id="editor-towho" value="" />
+		</div>
+	
+		<!-- Comment Type -->	
+		<!--<div class="category-comment fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend>Comment Type:</legend>
+				   <label for="radio-explication">ביאור מילים</label>			   
+				   <input type="radio" name="radio-choice-b" id="radio-explication" value="other" />
+					<label for="radio-rashi">רש"י</label>
+				   <input type="radio" name="radio-choice-b" id="radio-rashi" value="on" checked="checked" />			   		   
+			</fieldset>
+		</div>-->
+
+		<!-- Popup Author  -->
+		<!--<div class="category-comment fieldcontain">
+	    	<label for="editor-input" class='ui-input-text' style='display:None'>Author:</label>
+	    	<input type="text" class="editor-input ui-input-text" id="editor-author" value="" placeholder="מחבר" />
+		</div>-->	
+				
+		<!-- Popup Title  -->
+		<!--<div class="category-comment fieldcontain">
+	    	<label for="editor-title" class='ui-input-text' style='display:None'>Title:</label>
+	    	<input type="text" class="editor-input" id="editor-title" value="" placeholder="כותרת" />
+		</div>-->	
+		
+		<!--  Question Text -->
+		<div  class="category-comment fieldcontain">
+	    	<label for="name" class='ui-input-text' style='display:None'>Question</label>
+	    	<textarea class="editor-input" id="editor-question" placeholder="שאלה"></textarea>
+		</div>
+	
+
+		<!--  Comment Text -->
+		<div data-role="fieldcontain" class="category-comment ui-hide-label">
+	    	<label for="editor-comment" class='ui-input-text' >Comment</label>
+	    	<textarea class="editor-input" id="editor-comment" placeholder="תוכן"></textarea>
+		</div>
+		
+		<!--  HTML Content -->
+		<div data-role="fieldcontain" class="category-comment ui-hide-label">
+	    	<label for="editor-html" class='ui-input-text' >Html Content</label>
+	    	<textarea class="editor-input" id="editor-html" placeholder="HTML" ></textarea>
+		</div>		
+	
+		<!--  submit/cancel/delete button -->	
+	
+		<div class="ui-body ui-body-c" >
+			<div class="ui-grid-b" >
+					<div class="ui-block-a"><button type="submit" id="delete-button" data-theme="a" data-mini="true">Delete</button></div>		
+					<div class="ui-block-b"><button type="submit" id="cancel-button" data-theme="a" data-mini="true">Cancel</button></div>
+					<div class="ui-block-c"><button type="submit" id="submit-button" data-theme="a" data-mini="true">Submit</button></div>
+		    </div>
+		</div>
+		
+	</div>
+	</form>
+	
+	</div><!-- /content -->
+
+	<div data-role="footer" class="ui-bar" data-position="fixed" data-id="foo1" data-tap-toggle="false">
+		<h4></h4>
+	</div><!-- /footer -->
+</div>
+
+<!-- ************************** -->
+<div data-role="page" id="option" data-dialog="true" >
+    <div data-role="content">
+        <form id="option" action="">
+            <div data-role="fieldcontain">
+                <label for="toggleswitch1">
+                    Editor
+                </label>
+                <select name="toggleswitch1" id="toggles-editor-mode" data-theme="" data-role="slider"
+                data-mini="true">
+                    <option value="off">
+                        Off
+                    </option>
+                    <option value="on">
+                        On
+                    </option>
+                </select>
+                
+            </div>
+            <input id="return_option" type="submit" value="return">
+        </form>
+    </div>
+</div>
+<!-- ****************************** -->
+<div data-role="page" id="table-all-comments">
+    <div data-role="content">
+     <div id="table-x"></div>
+    
+    
+      <br/><br/>
+	  <input id="return_option_data_table" type="submit" value="return">
+    </div>
+</div>
+<!-- ****************************** -->
+<div data-role="page" id="allIntro" >
+    <div data-role="header" data-theme="a" data-position="fixed" id="header_area" data-tap-toggle="false">    
+	    <h1>
+			<span id="titleallIntro">רשימת נושאים</span>
+		</h1>
+		<div data-role="navbar">
+			<ul id='header-button'>
+				<li><a data-theme="b" class='returnToMainPage'  href="">חזרה</a></li>
+			</ul>
+		</div>
+	</div>		
+    <div data-role="content">
+       <div id="intro_body"></div>
+       <br/><br/>
+    </div>
+    <div data-role="footer" class="ui-bar" data-position="fixed" data-id="foo1" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul id='header-button'>
+				<li><a data-theme="b" class='returnToMainPage'  href="">חזרה</a></li>
+			</ul>
+		</div>	
+	</div>
+</div>
+<!-- ****************************** -->
+<div data-role="page" id="about_us" >
+  <div data-role="header" data-theme="a" data-position="fixed" id="header_area2" data-tap-toggle="false">    
+	    <h1>
+			<span id="titleallIntro">מי אנחנו</span>
+		</h1>
+		<div data-role="navbar">
+			<ul id='header-button'>
+				<li><a data-theme="b" class='returnToMainPage'  href="">חזרה</a></li>
+			</ul>
+		</div>
+  </div>		
+  <div data-role="content" id="content_about" >
+        <div class='ui-grid-b'>
+        	<div class='ui-block-a'>
+    		<div dir="rtl" class="ui-corner-all custom-corners" style="margin:20px;">
+  				<div class="ui-bar ui-bar-a">
+    				<h3>קצת עלנו</h3>
+  				</div>
+  				<div class="ui-body ui-body-a">
+    				<p>עלךדגעדגעלחדיג גלחדעיגכ עלחידגכעלחדיגשד שלד שדגכדשגכ דשגכחלישדגלכחישד שדלחג יכשדלגחיכ שלדחגיכשד</p>
+  				</div>	
+			</div>
+			</div>
+			<div class='ui-block-b'>
+			<div dir="rtl" class="ui-corner-all custom-corners" style="margin:20px;">
+  				<div class="ui-bar ui-bar-a">
+    				<h3>איך זה עובד</h3>
+  				</div>
+  				<div class="ui-body ui-body-a">
+    				<p><iframe width="320" height="315" src="//www.youtube.com/embed/xZoXIloiXvw" frameborder="0" allowfullscreen></iframe></p>
+  				</div>
+			</div>
+			</div>
+			<div class='ui-block-c'>
+			<div dir="rtl" class="ui-corner-all custom-corners" style="margin:20px;">
+  				<div class="ui-bar ui-bar-a">
+    				<h3>רישיונות</h3>
+  				</div>
+  				<div class="ui-body ui-body-a">
+    				<p>הטקסט מוגש בכפוף לרישיון Creative Commons ייחוס-שיתוף זהה 3.0</p>
+    				<p>למעט התכנים הבאים</p>
+    				<table dir="rtl"  data-role="table" id="table-column-toggle" class="ui-responsive table-stroke">
+    			 		<thead>
+       					<tr>
+         					<th>תוכן</th>
+         					<th>רישיון</th>
+       					</tr>
+     					</thead>
+     					<tbody>
+       						<tr>
+         						<td><a href="http://he.wikisource.org/" data-rel="external">ויקיטקסט – הספרייה החופשית</a></td>
+         						<td>rishayon ...</td>
+       						</tr>
+       						<tr>
+         						<td><a href="http://he.wikisource.org/" data-rel="external">תרגום התורה בצרפתית</a></td>
+         						<td>copyright </td>
+       						</tr>
+       						<tr>
+         						<td><a href="http://he.wikisource.org/" data-rel="external">תרגום התורה באנגלית</a></td>
+         						<td>copyright </td>
+      						</tr>
+     					</tbody>
+   					</table>
+  				</div>
+			</div>
+			</div>
+		</div>
+        
+  
+		
+		<div dir="rtl" class="ui-corner-all custom-corners" style="margin:30px;">
+  			<div class="ui-bar ui-bar-a">
+    			<h3>לעילוי נשמת</h3>
+  			</div>
+  			<div class="ui-body ui-body-a">
+    			<p>לעילוי נשמת אבי מורי ניסים בן משה הכהן</p>
+  			</div>
+		</div>
+		
+    </div>
+    
+    <div data-role="footer" class="ui-bar" data-position="fixed" data-id="foo1" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul id='header-button'>
+				<li><a data-theme="b" class='returnToMainPage'  href="">חזרה</a></li>
+			</ul>
+		</div>	
+	</div>
+</div>
+
+
+
+</body>
+</html>

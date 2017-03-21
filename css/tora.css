@@ -1,0 +1,74 @@
+			#toc {text-align:center;background:#DDDDD8;margin: 10px; padding: 20px;background: white;}
+			.ui-popup.ui-content, .ui-popup .ui-content { overflow: hidden;}
+			#editor-page {background:white;}
+			.edit.editor {margin-left: 10px;}
+			#editor-page .ui-content {margin:20px;}
+			.ui-input-text input {text-align:right;}
+			.editor-input {direction:rtl;}
+			#editor-html {direction:ltr;}
+			.word-editor {display: inline-block;}
+			.editor-selected-text {color:red;}
+			#text-top {margin:10px;color red;font-weight:bold;background:rgba(185, 223, 241, 0.58);font-size:30px;color:grey;border:2px solid grey;}
+            .book-selected {text-decoration:underline;background:yellow;}
+			.parasha-selected {text-decoration:underline;background:yellow;color:red;font-weight: bold;}
+			.perek-selected {text-decoration:underline;background:yellow;color:red;font-weight: bold;}
+			#book {padding-top: 6px; padding-bottom: 6px;  font-size: 24px;}
+			#parasha {padding-top: 2px; padding-bottom: 6px; font-size: 24px;}
+			#prakim {/*width:600px; */ margin-left: auto ;margin-right: auto ;color:#585C76;font-size: 26px;}
+			.segmented-control { text-align:center;}
+			.segmented-control .ui-controlgroup { margin: 0.2em; }
+			.ui-control-active, .ui-control-inactive {border-style: solid; border-color: gray; }
+			.ui-control-active { background: #BBB; }
+			.ui-control-inactive { background: #DDD; }
+			.nb{font-size:25px;color:white;padding-left:5px;padding-right:5px;border:1px solid white; background:#42475B;margin-left:10px;}			
+			.translation {display:none;font-size:20px;padding-left:10px;text-align:right;padding-right: 10px; margin-right: 30px;background:#EBE9EB}
+			.text span {margin-left:7px;}
+			.word { display: inline-block;}
+			#ui-tooltip-step-title {font-size:120%;}
+			.ui-tooltip-titlebar {text-align: center;font: 15px arial,sans-serif;}
+			#content {color: grey;}
+			.used {color: black;}
+			.active-text {color:red}
+            .key-text {border-bottom: 1px solid blue;}
+			.question {color:black}
+			.text-content {/*font-weight:bold;*/color:black}
+			.tooltip {display:none;background:transparent url('images/black_arrow.png');font-size:12px;height:70px;width:160px;padding:25px;color:#fff;}
+			#demo img {border:1;cursor:pointer;margin:0 8px;}
+			.ui-tooltip-content {font-size: 150%;text-align: right;font:15px arial,sans-serif;}
+			.highlight {color:black;}
+			#popupBasic-popup {z-index:16000;}
+			.ui-content {padding: 0px;}
+			#page-bgtop {padding-right: 15px; padding-top: 15px;}
+			#prakim-section {}
+			#popupPanel-popup {buttom: 0 !important;top: auto !important;}
+			#popupPanel {height: 200px;border: 1px solid #000;border-right: none;background: rgba(0,0,0,.5);margin: -1px 0;}
+			#popupPanel .ui-btn {margin: 2em 15px;}
+			#controlgroup1,#controlgroup2 {display:inline;}
+			#content {margin-right: 30px;}			
+    			#sidebar1 {float:right;width:250px;background:#B3C3D3;display:none;}
+    			.sidebar2 {float:right;width:250px;background:#B3C3D3;font-family: Helvetica,Arial,sans-serif;color: #333333;font-size: 60%;display:none;margin-top: 10px; margin-bottom: 0px; padding: 2px 5px;}
+    			.sidebar3 {float:right;width:250px;background:#B3C3D3;font-family: Helvetica,Arial,sans-serif;color: #333333;font-size: 60%;display:none;margin-top: 10px; margin-bottom: 0px; padding: 2px 5px;text-align:center;}
+    			.passouk {margin-right:0px;}
+    			.text-resume {font-size: 60%;background:#B3C3D3;color:black;margin-left: 10px; padding: 10px;display:none;margin-top: 10px;}
+			    .text-resume-all {direction:rtl;font-size: 150%;background:#B3C3D3;color:black;margin-left: 10px; padding: 10px;margin-top: 10px;}			
+    			.text-separator-parasha {background:#D5D1CA;margin-left: 10px;font-size: 70%;color:black;padding: 10px;margin-top: 10px; margin-bottom: 10px;}
+    			#header-button .ui-btn-text {font-size:130%;}
+    			.arrow {vertical-align: middle;}
+    			
+    			.nb {float: right; width: 30px;text-align:center;margin-top: 8px;}
+    			/*.passouk{line-height:150%;}*/
+    			.passouk{/*margin-top:8px;margin-bottom:8px;*/}
+    			.text {margin-right: 60px;line-height:1.5;margin-left:10px;}
+    			/*.text {display:inline;}*/
+			.ui-tooltip-content {direction:rtl;text-align:right;} 
+    			.nb {border-style:none;border-color:#ff0000 #0000ff;}
+    			.translation {line-height: 1.8;margin-right: 60px;}
+				.header-cote {margin-top:12px;}
+			.intro-item-active {color:red;background:yellow;}
+			#checkbox-record-label.ui-checkbox-on {background-color:red;}
+			.Cauthor div, .Ctitle {width:80%}
+			#editor-comment {background-color: rgb(240, 230, 140);} 
+			#delete-button {width: 80%;}
+			#submit-button {width: 80%;}
+			#cancel-button {width: 80%;}
+			
