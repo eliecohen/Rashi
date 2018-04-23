@@ -1,27 +1,26 @@
-/*
 
-TODO
+//
+//
+// - title of the page
+// - revoir la data structure des comments
+// -  mettre a jours le array aveec le commencement de chaque passouk
+// - validation form for all page
+// -  picture upload
+// - faire plus jolie data table
+// - generic comment reuse for example efod
+// - pas clair qunad le button des resume est allume
+// - disable the passouk not clickable if not commentregular
+// - est ce que le get tooltip comment is x2 1 fois pour le editor et une fois pour la page ?
+//
+// low priority
+// ==============
+// - option choisir sa langue
+// - save state of the layout in cookie
+// - missing passouk /perek in editor mode
+// -  goto the current parasha
+// -. teoudat zeout in the option form
 
-- title of the page
-- revoir la data structure des comments
--  mettre a jours le array aveec le commencement de chaque passouk
-- validation form for all page
--  picture upload
-- faire plus jolie data table
-- generic comment reuse for example efod
-- pas clair qunad le button des resume est allume
-- disable the passouk not clickable if not commentregular
-- est ce que le get tooltip comment is x2 1 fois pour le editor et une fois pour la page ?
 
-low priority
-==============
-- option choisir sa langue
-- save state of the layout in cookie
-- missing passouk /perek in editor mode
--  goto the current parasha
--. teoudat zeout in the option form
-
-*/
 
 //************************************************
 //*******  footbar  Module                  ******
@@ -162,12 +161,15 @@ var footbarModule = {
 
 				type = value.split("_").pop().split(".")[0];  // 1_1.mp3  perek 1 & type 1
 
-				if (type == "1")
-					selectText = "אשכנזית";
-				else if (type == "2")
-					selectText = "ספרדית";
-				else
-					selectText = "other";
+				if (type === "1") {
+                    selectText = "אשכנזית";
+                }
+				else if (type === "2") {
+                    selectText = "ספרדית";
+                }
+				else {
+                    selectText = "other";
+                }
 
 				footbarModule.selectSoundType.append($("<option class='dynamic-type'></option>").attr("value",type).text(selectText));
 
@@ -182,7 +184,7 @@ var footbarModule = {
 
 		refreshFootBar: function() {
 
-			if (layoutModule.setting.mode == layoutModule.LAYOUT_TAAMIM)
+			if (layoutModule.setting.mode === layoutModule.LAYOUT_TAAMIM)
 			{
 				this.showSoundButton();
 				this.showSelectMenuSound();
@@ -200,7 +202,7 @@ var footbarModule = {
 					this.hideRecordButton();
 				}
 			}
-			else if (layoutModule.setting.mode == layoutModule.LAYOUT_PCHAT)
+			else if (layoutModule.setting.mode === layoutModule.LAYOUT_PCHAT)
 			{
 				this.showIntroButton();
 				this.hideSoundButton();
@@ -208,7 +210,7 @@ var footbarModule = {
 				this.hideRecordButton();
 				this.hideSelectMenuSound();
 			}
-			else if (layoutModule.setting.mode == layoutModule.LAYOUT_MODERN)
+			else if (layoutModule.setting.mode === layoutModule.LAYOUT_MODERN)
 			{
 				this.showIntroButton();
 				this.hideSoundButton();
@@ -216,7 +218,7 @@ var footbarModule = {
 				this.hideRecordButton();
 				this.hideSelectMenuSound();
 			}
-			else if (layoutModule.setting.mode == layoutModule.LAYOUT_TRADUCTION)
+			else if (layoutModule.setting.mode === layoutModule.LAYOUT_TRADUCTION)
 			{
 				this.showIntroButton();
 				this.hideSoundButton();
@@ -311,8 +313,9 @@ var mp3Module = {
 		// *****************************************
 
 		pause: function (){
-			if (this.getStatus() != "play")
-				return;
+			if (this.getStatus() !== "play") {
+                return;
+            }
 			this.setStatus ("pause");
 			this.player.jPlayer("pause");
 			footbarModule.changePausePlayLabel('Play');
@@ -323,8 +326,9 @@ var mp3Module = {
 		// *****************************************
 
 		stop: function (){
-			if (this.getStatus() == "stop")
-				return;
+			if (this.getStatus() === "stop") {
+                return;
+            }
 			this.setStatus("stop");
 			this.player.jPlayer("stop");
 			footbarModule.changePausePlayLabel('Play');
@@ -337,14 +341,15 @@ var mp3Module = {
 		play: function(time){
 
 			this.setStatus("play");
-			footbarModule.changePausePlayLabel('Pause');
+			footbarModule.changePausePlayLabel("Pause");
 
-			if (typeof time == 'undefined')
+			if (typeof time === "undefined")
 			{
 				this.player.jPlayer("play");        //continue from the current position
 			}
-			else
-				this.player.jPlayer("play",time);	//play from a given position
+			else {
+				this.player.jPlayer("play", time);	//play from a given position
+            }
 		},
 
 	    // *****************************************
@@ -357,10 +362,11 @@ var mp3Module = {
 
 			// if mode is not TAAMIM return
 
-			if (layoutModule.setting.mode != layoutModule.LAYOUT_TAAMIM)
-				return;
+			if (layoutModule.setting.mode !== layoutModule.LAYOUT_TAAMIM) {
+                return;
+            }
 
-			$.get('/utilities/check_sound.php',{"b":book,"p":perek}, function(data) {
+			$.get("/utilities/check_sound.php",{"b":book,"p":perek}, function(data) {
 
 				if ($.isEmptyObject(data)){  // if no mp3 file found hide the sound Button
 					footbarModule.hideSoundButton();
@@ -387,8 +393,9 @@ var mp3Module = {
 			console.log("read sound time association file:"+metaDataModule.serverRoot+'/source/sound/'+book+'/'+perek+'_'+type+'.json');
 			$.getJSON( metaDataModule.serverRoot+'/source/sound/'+book+'/'+perek+'_'+type+'.json', function( json ){
 				mp3Module.jsonDb = json;
-				if (metaDataModule.isAuthor())
-					mp3Module.markKeyWord();
+				if (metaDataModule.isAuthor()) {
+                    mp3Module.markKeyWord();
+                }
 			}).fail(function(){
 				console.log("missing sound time association");
 				mp3Module.jsonDb = [];
@@ -436,7 +443,9 @@ var mp3Module = {
 				    "db"  : u
 			};
 
-			$.post( "record.php", data );
+			$.post( "/utilities/record.php", data ).done(function( data ) {
+                console.log("Data Loaded: " + data );
+            });
 
 			event.preventDefault();
 			return false;
@@ -643,11 +652,12 @@ var mp3Module = {
 			$("body").delegate('.word-taam','click', function(event) {
 
 				// Record Mode
+                var index_separator;
 
 				if (layoutModule.setting.recordMode == true)
 				{
-			       current_id = $(this).attr('id');
-			       var index_separator = current_id.indexOf("-");
+			       var current_id = $(this).attr('id');
+			       index_separator = current_id.indexOf("-");
 				   var lp = parseInt(current_id.substring(1,index_separator));
 				   var lw = parseInt(current_id.substring(index_separator+1));
 
@@ -657,7 +667,7 @@ var mp3Module = {
 				else
 				{
 				   var str = this.id; //p16-14
-				   var index_separator = str.indexOf("-");  //to=p9-2
+				   index_separator = str.indexOf("-");  //to=p9-2
 				   var p = parseInt(str.substring(1,index_separator));  //lp=9
 				   var w = parseInt(str.substring(index_separator+1));	 //lw=2
 				   var time = mp3Module.getTime (p,w);
