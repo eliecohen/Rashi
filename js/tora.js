@@ -392,6 +392,9 @@ var mp3Module = {
 
 			console.log("read sound time association file:"+metaDataModule.serverRoot+'/source/sound/'+book+'/'+perek+'_'+type+'.json');
 			$.getJSON( metaDataModule.serverRoot+'/source/sound/'+book+'/'+perek+'_'+type+'.json', function( json ){
+				if (json === null){
+					alert("sound metadata is null");
+				}
 				mp3Module.jsonDb = json;
 				if (metaDataModule.isAuthor()) {
                     mp3Module.markKeyWord();
