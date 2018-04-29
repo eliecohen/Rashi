@@ -3614,10 +3614,19 @@ var sideMenuModule = {
 		else
 			this.set(this.MENU_CLOSE); */
 
-		if (this.mode == this.MENU_COMMUNICATION)
-			this.set(this.MENU_CLOSE);
-		else
-			this.set(this.MENU_COMMUNICATION);
+		//eliecohen
+        if (layoutModule.setting.mode === layoutModule.LAYOUT_TAAMIM) {
+            if (mp3Module.getStatus() == "play")
+                mp3Module.pause();
+            else
+                mp3Module.play();
+        }
+        else {
+            if (this.mode == this.MENU_COMMUNICATION)
+                this.set(this.MENU_CLOSE);
+            else
+                this.set(this.MENU_COMMUNICATION);
+        }
 
 	}
 
